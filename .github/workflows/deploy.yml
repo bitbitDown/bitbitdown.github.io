@@ -3,29 +3,45 @@ name: Deploy Nuxt 4 site to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - master  # 开发分支
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      # 1️⃣ 拉取代码
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
+      # 2️⃣ 设置 Node.js 版本
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20.19  # 必须 >=20.19
+          node-version: 20.19  # ⚠️ 必须 >=20.19
 
+      # 3️⃣ 检查 Node 版本
+      - name: Check Node and npm version
+        run: |
+          node -v
+          npm -v
+
+      # 4️⃣ 安装依赖（干净安装）
       - name: Install dependencies
         run: |
           rm -rf node_modules package-lock.json
           npm install
 
-      - run: npm run generate
+      # 5️⃣ 构建 Nuxt 静态网站
+      - name: Build Nuxt static site
+        run: npm run generate
 
-      - uses: peaceiris/actions-gh-pages@v3
+      # 6️⃣ 部署到 gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./.output/public
           publish_branch: gh-pages
+          # 可选：设置 commit message
+          commit_message: "Auto deploy from master branch"
