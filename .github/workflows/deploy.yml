@@ -1,9 +1,9 @@
-name: Deploy Nuxt 3 site to GitHub Pages
+name: Deploy Nuxt 4 site to GitHub Pages
 
 on:
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   build-and-deploy:
@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20.19  # 必须 >=20.19
 
-      # 清理依赖，重新安装
       - name: Install dependencies
         run: |
           rm -rf node_modules package-lock.json
