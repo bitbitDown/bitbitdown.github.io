@@ -3,7 +3,7 @@ name: Deploy Nuxt 3 site to GitHub Pages
 on:
   push:
     branches:
-      - master  # 监控 dev 分支的更新
+      - master
 
 jobs:
   build-and-deploy:
@@ -16,7 +16,11 @@ jobs:
         with:
           node-version: 18
 
-      - run: npm install
+      # 清理依赖，重新安装
+      - name: Install dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - run: npm run generate
 
@@ -24,4 +28,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./.output/public
-          publish_branch: gh-pages  # 部署目标分支
+          publish_branch: gh-pages
