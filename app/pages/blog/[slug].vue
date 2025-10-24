@@ -19,7 +19,7 @@
         <!-- 文章标题和元信息 -->
         <header class="text-center mb-12">
           <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-            {{ doc.title || doc._raw?.value?.title }}
+            {{ doc.title  }}
           </h1>
           
           <div class="flex flex-wrap items-center justify-center gap-6 text-gray-600 mb-8">
@@ -152,6 +152,8 @@ const route = useRoute()
 const { data: doc } = await useAsyncData(route.params.slug, () =>
   queryCollection('blog').path(route.path).first()
 )
+
+console.log('doc',doc)
 </script>
 
 <style scoped>

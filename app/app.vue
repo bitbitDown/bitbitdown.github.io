@@ -157,38 +157,6 @@
               </a>
             </div>
           </div>
-
-          <!-- 快速链接 -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">快速链接</h3>
-            <ul class="space-y-3">
-              <li>
-                <NuxtLink to="/" class="no-underline text-gray-600 hover:text-blue-600 transition-colors">
-                  首页
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/blog" class="no-underline text-gray-600 hover:text-blue-600 transition-colors">
-                  博客
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/about" class="no-underline text-gray-600 hover:text-blue-600 transition-colors">
-                  关于
-                </NuxtLink>
-              </li>
-            </ul>
-          </div>
-
-          <!-- 联系信息 -->
-          <div>
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">联系方式</h3>
-            <div class="space-y-3 text-gray-600">
-              <p>📧 邮箱联系</p>
-              <p>🐙 GitHub</p>
-              <p>💬 欢迎交流</p>
-            </div>
-          </div>
         </div>
 
         <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-500">
